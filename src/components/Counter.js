@@ -1,13 +1,5 @@
-import React, { Fragment, useState } from 'react'
-
-const CounterView = ({ countValue, onIncrement }) => {
-  return (
-    <Fragment>
-      <p>{countValue}</p>
-      <button onClick={onIncrement}>Click now</button>
-    </Fragment>
-  )
-}
+import React, { useState } from 'react'
+import InteractiveView from './Interactive'
 
 const Counter = () => {
   let [count, setCount] = useState(0)
@@ -17,10 +9,11 @@ const Counter = () => {
   }
 
   return (
-    <CounterView
-      countValue={count}
-      onIncrement={onIncrementHandler}
-    ></CounterView>
+    <InteractiveView
+      value={count}
+      onAction={onIncrementHandler}
+      actionText="Increment"
+    ></InteractiveView>
   )
 }
 
