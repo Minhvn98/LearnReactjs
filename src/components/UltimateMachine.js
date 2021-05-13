@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
 import './UltimateMachine.css';
 
-const OnMessage = () => <span>The machine is ON</span>;
-
-const OffMessage = () => <span>The machine is OFF</span>;
+const KhoeChim = () => <span>Con chim dai 20cm</span>;
 
 const UltimateMachine = () => {
-  const [isOn, setIsOn] = useState(false);
+  const [showChim, setShowChim] = useState(false);
   const onClickHandler = () => {
-    setIsOn(!isOn);
+    setShowChim(!showChim);
   };
 
   return (
     <section>
       <h1>Ultimate Machine</h1>
-      {isOn ? <OnMessage></OnMessage> : <OffMessage></OffMessage>}
-      <button type="button" onClick={onClickHandler} aria-pressed={isOn}>
+      {showChim && <KhoeChim></KhoeChim>}
+      <button type="button" onClick={onClickHandler} aria-pressed={showChim}>
         On/Off
       </button>
     </section>
