@@ -1,46 +1,28 @@
 import React, { useState } from 'react';
 
-const list1 = [
-  'Đi biển',
-  'Đi leo núi',
-  'Đi phượt',
-  'Đi ăn PHO',
-  'Đi lang thang',
-];
-
-const list2 = [
-  'Đi biển',
-  'Đi ăn PHO',
-  'Đi phượt',
-  'Đi lang thang',
-  'Đi leo núi',
+const list = [
+  { id: 0, name: 'Đi biển', topDestination: true },
+  { id: 1, name: 'Đi leo núi', topDestination: false },
+  { id: 2, name: 'Đi phượt', topDestination: true },
+  { id: 3, name: 'Đi ăn PHO', topDestination: false },
+  { id: 4, name: 'Đi lang thang', topDestination: true },
 ];
 
 const HolidayList = () => {
-  const [list, setList] = useState(list1);
-
-  const onClickHandler = () => {
-    setList(list === list1 ? list2 : list1);
-  };
-
-  const displayList = () => {
-    return (
-      <ul>
-        {list.map((item, index) => (
-          <li key={item}>
-            <label htmlFor={`item-${index}`}>{item}</label>
-            <input id={`item-${index}`} type="text"></input>
-          </li>
-        ))}
-      </ul>
-    );
-  };
+  const [showAll, setShowAll] = useState(true);
 
   return (
     <div>
-      <h1>Holiday List</h1>
-      {displayList()}
-      <button onClick={onClickHandler}>Change List</button>
+      <h1>Holiday Destinations</h1>
+      <ul>
+        {list
+          .filter((item) => (showAll ? true : item.topDestination === true))
+          .map((item, idx) => (
+            <li key={idx}>{item.name}</li>
+          ))}
+      </ul>
+      <button onClick={() => setShowAll(true)}>Show All</button>
+      <button onClick={() => setShowAll(false)}>Show Destinations</button>
     </div>
   );
 };
