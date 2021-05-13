@@ -1,9 +1,9 @@
-import UltimateMachine from './components/UltimateMachine';
+import HolidayList from './components/HolidayList';
 
 function App() {
   return (
     <main>
-      <UltimateMachine></UltimateMachine>
+      <HolidayList></HolidayList>
     </main>
   );
 }
