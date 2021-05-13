@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const list = [
   { id: 0, name: 'Đi biển', topDestination: true },
@@ -9,20 +9,14 @@ const list = [
 ];
 
 const HolidayList = () => {
-  const [showAll, setShowAll] = useState(true);
-
   return (
     <div>
       <h1>Holiday Destinations</h1>
       <ul>
-        {list
-          .filter((item) => (showAll ? true : item.topDestination === true))
-          .map((item, idx) => (
-            <li key={idx}>{item.name}</li>
-          ))}
+        {Object.keys(list).map((key, idx) => (
+          <li key={idx}>{list[key].name}</li>
+        ))}
       </ul>
-      <button onClick={() => setShowAll(true)}>Show All</button>
-      <button onClick={() => setShowAll(false)}>Show Destinations</button>
     </div>
   );
 };
