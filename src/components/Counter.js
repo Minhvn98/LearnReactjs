@@ -1,26 +1,30 @@
 import React, { useState, useEffect } from 'react';
 
+const subscribe = (count) => console.log(`Subscribe for ${count}`);
+
+const unsubscribe = (count) => console.log(`Unsubscribe for ${count}`);
+
 const Counter = () => {
   const [counter, setCounter] = useState(0);
-  const [internalCount, setInternalCount] = useState(0);
 
   useEffect(() => {
     document.title = `Hehe ${counter}`;
-    console.log('Title was set!');
+  }, [counter]);
+
+  useEffect(() => {
+    subscribe(counter);
+
+    return () => {
+      unsubscribe(counter);
+    };
   }, [counter]);
 
   const onCountClickHandler = () => setCounter((c) => c + 1);
 
-  const onInternalClickHandler = () => setInternalCount(internalCount + 1);
-
-  console.log('Main Rendered!');
-
   return (
     <div>
-      <h1>Ultimate Counter</h1>
       <p>{counter}</p>
       <button onClick={onCountClickHandler}>Increment</button>
-      <button onClick={onInternalClickHandler}>Internal Increment</button>
     </div>
   );
 };
