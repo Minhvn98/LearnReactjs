@@ -1,9 +1,9 @@
-import HolidayList from './components/HolidayList';
+import Counter from './components/Counter';
 
 function App() {
   return (
     <main>
-      <HolidayList></HolidayList>
+      <Counter></Counter>
     </main>
   );
 }
