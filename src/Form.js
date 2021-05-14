@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 
+const initinalState = {
+  firstName: '',
+  lastName: '',
+}
+
 const Form = () => {
-  const [formSate, setFormSate] = useState({
-    firstName: '',
-    lastName: '',
-  })
+  const [formSate, setFormSate] = useState(initinalState)
 
   const onChangeHandler = (e) => {
     setFormSate({
@@ -16,6 +18,10 @@ const Form = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault()
     console.log(formSate)
+  }
+
+  const onCickHandler = () => {
+    setFormSate(initinalState)
   }
 
   return (
@@ -37,7 +43,11 @@ const Form = () => {
         onChange={onChangeHandler}
         value={formSate.lastName}
       ></input>
-      <button type="submit">Submit</button>
+      <br />
+      <button type="submit">Save</button>
+      <button onClick={onCickHandler} type="button">
+        Clear
+      </button>
     </form>
   )
 }
