@@ -1,18 +1,37 @@
 import React, { useState } from 'react'
 
 const Form = () => {
-  const [firstName, setFirstName] = useState('')
+  const [formSate, setFormSate] = useState({
+    firstName: '',
+    lastName: '',
+  })
 
   const onChangeHandler = (e) => {
-    console.log(e.target.value)
-    setFirstName(e.target.value)
+    setFormSate({
+      ...formSate,
+      [e.target.name]: e.target.value,
+    })
   }
 
   return (
     <form>
-      <p>First name : {firstName}</p>
+      <p>{`Your name : ${formSate.firstName} ${formSate.lastName}`}</p>
       <label htmlFor="firstName">First name</label>
-      <input id="firstName" onChange={onChangeHandler}></input>
+      <input
+        id="firstName"
+        name="firstName"
+        onChange={onChangeHandler}
+        value={formSate.firstName}
+      ></input>
+
+      <br />
+      <label htmlFor="lastName">Last name</label>
+      <input
+        id="lastName"
+        name="lastName"
+        onChange={onChangeHandler}
+        value={formSate.lastName}
+      ></input>
     </form>
   )
 }
