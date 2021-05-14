@@ -1,9 +1,9 @@
-import Counter from './components/Counter';
+import StopWatch from './components/StopWatch';
 
 function App() {
   return (
     <main>
-      <Counter></Counter>
+      <StopWatch></StopWatch>
     </main>
   );
 }
