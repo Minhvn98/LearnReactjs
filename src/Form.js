@@ -13,8 +13,13 @@ const Form = () => {
     })
   }
 
+  const onSubmitHandler = (e) => {
+    e.preventDefault()
+    console.log(formSate)
+  }
+
   return (
-    <form>
+    <form onSubmit={onSubmitHandler}>
       <p>{`Your name : ${formSate.firstName} ${formSate.lastName}`}</p>
       <label htmlFor="firstName">First name</label>
       <input
@@ -32,6 +37,7 @@ const Form = () => {
         onChange={onChangeHandler}
         value={formSate.lastName}
       ></input>
+      <button type="submit">Submit</button>
     </form>
   )
 }
