@@ -1,19 +1,43 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 
 const initinalState = {
   firstName: '',
   lastName: '',
   biography: '',
   transport: '',
+  agree: false,
+  breakfast: false,
+  lunch: false,
+  dinner: false,
+  shirtSize: '',
+}
+
+const loadedData = {
+  firstName: 'Minh',
+  lastName: 'Vũ',
+  biography: 'Minh gioi vl',
+  transport: 'bikes',
+  agree: true,
+  breakfast: true,
+  dinner: false,
+  lunch: true,
+  shirtSize: 'm',
+}
+
+const FormContainer = () => {
+  return <Form></Form>
 }
 
 const Form = () => {
   const [formSate, setFormSate] = useState(initinalState)
 
   const onChangeHandler = (e) => {
+    const value =
+      e.target.type === 'checkbox' ? e.target.checked : e.target.value
+
     setFormSate({
       ...formSate,
-      [e.target.name]: e.target.value,
+      [e.target.name]: value,
     })
   }
 
@@ -23,7 +47,7 @@ const Form = () => {
   }
 
   const onCickHandler = () => {
-    setFormSate(initinalState)
+    setFormSate(loadedData)
   }
 
   return (
@@ -70,12 +94,89 @@ const Form = () => {
         <option value="boats">Boats</option>
       </select>
       <br />
+
+      <fieldset>
+        <legend>Eat</legend>
+
+        <input
+          id="breakfast"
+          name="breakfast"
+          type="checkbox"
+          onChange={onChangeHandler}
+          checked={formSate.breakfast}
+        />
+        <label htmlFor="breakfast">Breakfast</label>
+
+        <input
+          id="lunch"
+          name="lunch"
+          type="checkbox"
+          onChange={onChangeHandler}
+          checked={formSate.lunch}
+        />
+        <label htmlFor="lunch">Lunch</label>
+
+        <input
+          id="dinner"
+          name="dinner"
+          type="checkbox"
+          onChange={onChangeHandler}
+          checked={formSate.dinner}
+        />
+        <label htmlFor="dinner">Dinner</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>T-shrit Size</legend>
+        <label htmlFor="sizeS">Small</label>
+        <input
+          id="sizeS"
+          name="shirtSize"
+          type="radio"
+          onChange={onChangeHandler}
+          value="s"
+          checked={formSate.shirtSize === 's'}
+        />
+
+        <label htmlFor="sizeM">Medium</label>
+        <input
+          id="sizeM"
+          name="shirtSize"
+          type="radio"
+          onChange={onChangeHandler}
+          value="m"
+          checked={formSate.shirtSize === 'm'}
+        />
+
+        <label htmlFor="sizeL">Large</label>
+        <input
+          id="sizeL"
+          name="shirtSize"
+          type="radio"
+          onChange={onChangeHandler}
+          value="l"
+          checked={formSate.shirtSize === 'l'}
+        />
+      </fieldset>
+
+      <br />
+      <label htmlFor="agree">Checkbox</label>
+      <input
+        type="checkbox"
+        id="agree"
+        name="agree"
+        onChange={onChangeHandler}
+        checked={formSate.agree}
+      ></input>
+
+      <br />
+      <br />
       <button type="submit">Save</button>
       <button onClick={onCickHandler} type="button">
-        Clear
+        Load Data
       </button>
     </form>
   )
 }
 
-export default Form
+export default FormContainer
