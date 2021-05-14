@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 const initinalState = {
   firstName: '',
   lastName: '',
+  biography: '',
+  transport: '',
 }
 
 const Form = () => {
@@ -43,6 +45,30 @@ const Form = () => {
         onChange={onChangeHandler}
         value={formSate.lastName}
       ></input>
+      <br />
+
+      <label htmlFor="biography">Biography</label>
+      <textarea
+        id="biography"
+        name="biography"
+        rows="5"
+        onChange={onChangeHandler}
+        value={formSate.biography}
+      ></textarea>
+      <br />
+      <label htmlFor="transport">Transport</label>
+      <select
+        id="transport"
+        name="transport"
+        onChange={onChangeHandler}
+        value={formSate.transport}
+      >
+        <option>None selected</option>
+        <option value="cars">Cars</option>
+        <option value="bikes">Bikes</option>
+        <option value="trains">Trains</option>
+        <option value="boats">Boats</option>
+      </select>
       <br />
       <button type="submit">Save</button>
       <button onClick={onCickHandler} type="button">
