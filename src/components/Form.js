@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Input from './Input'
 
 const initinalEntryState = {
   recordName: '',
@@ -29,25 +30,23 @@ const Form = ({ onSubmit }) => {
 
   return (
     <form onSubmit={onSubmitHandler}>
-      <label htmlFor="recordName">Record name</label>
-      <input
-        id="recordName"
+      <Input
+        labelText="Record name"
         name="recordName"
         onChange={onChangeHandler}
         value={entry.recordName}
-      />
+      ></Input>
 
-      <label htmlFor="artistName">Artist Name</label>
-      <input
-        id="artistName"
+      <Input
+        labelText="Artist Name"
         name="artistName"
         onChange={onChangeHandler}
         value={entry.artistName}
       />
 
-      <label htmlFor="description">Description</label>
-      <textarea
-        id="description"
+      <Input
+        labelText="Description"
+        type="textarea"
         name="description"
         onChange={onChangeHandler}
         value={entry.description}
