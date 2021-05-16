@@ -1,6 +1,6 @@
-import Container from './components/Container'
+import Wrapper from './components/Container'
 function App() {
-  return <Container></Container>
+  return <Wrapper></Wrapper>
 }
 
 export default App

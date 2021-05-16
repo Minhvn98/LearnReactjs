@@ -23,4 +23,14 @@ const records = [
 ]
 app.get('/api/records', (req, res) => res.send(records))
 
+app.post('/api/records', (req, res) => {
+  const record = {
+    id: records.reduce((acc, item) => (acc > item.id ? acc : item.id), 0) + 1,
+    ...req.body,
+  }
+
+  records.push(record)
+  res.status(200).json(records)
+})
+
 app.listen(port, () => console.log(`App listening on port ${port}`))
