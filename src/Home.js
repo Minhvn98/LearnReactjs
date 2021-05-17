@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Section from './Section'
 
 const Home = () => {
   return (
-    <section>
-      <h1>Welcome to the weather report</h1>
+    <Section headingText="Welcome to the weather report">
       <p>
         Please select one of the options below to view the current weather in
         your temperature scale of choice!
@@ -24,7 +24,7 @@ const Home = () => {
           </li>
         </ul>
       </nav>
-    </section>
+    </Section>
   )
 }
 

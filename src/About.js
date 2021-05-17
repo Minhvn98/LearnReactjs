@@ -1,14 +1,14 @@
 import React from 'react'
+import Section from './Section'
 
 const About = () => {
   return (
-    <section>
-      <h1>About this weather app</h1>
+    <Section headingText="About this weather app">
       <p>
         This application has been built with care and love by your Ultimate
         Team!
       </p>
-    </section>
+    </Section>
   )
 }
 

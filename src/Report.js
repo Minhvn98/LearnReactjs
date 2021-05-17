@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react'
+import Section from './Section'
 import { weatherData } from './weatherData'
 
 const Report = ({ match }) => {
   const { scale } = match.params
   const data = weatherData(scale)
+  const headingText = `Your weather report in ${
+    scale.charAt(0).toUpperCase() + scale.slice(1)
+  }`
   return (
-    <section>
-      <h1>
-        Your weather report in {scale.charAt(0).toUpperCase() + scale.slice(1)}
-      </h1>
-
+    <Section headingText={headingText}>
       <dl>
         {data.map((dataPoint) => (
           <Fragment key={dataPoint.city}>
@@ -18,7 +18,7 @@ const Report = ({ match }) => {
           </Fragment>
         ))}
       </dl>
-    </section>
+    </Section>
   )
 }
 
