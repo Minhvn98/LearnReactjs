@@ -1,7 +1,7 @@
 import Greeting from './components/Greeting'
 
 function App() {
-  return <Greeting initialName="Con cac" />
+  return <Greeting />
 }
 
 export default App
