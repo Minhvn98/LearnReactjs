@@ -7,6 +7,7 @@ const syncLocalStorageWithStage = (key, defaultValue = '') => {
   )
 
   useEffect(() => {
+    console.log('Con chim')
     window.localStorage.setItem(key, state)
   }, [key, state])
 
