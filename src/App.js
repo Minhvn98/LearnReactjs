@@ -1,51 +1,19 @@
-import React, { useState } from 'react'
+import React, { useReducer } from 'react'
 
-const Name = ({ name, onNameChange }) => {
-  return (
-    <div>
-      <label htmlFor="name">Name: </label>
-      <input name="name" id="name" onChange={onNameChange} value={name} />
-    </div>
-  )
-}
+const countReducer = (count, step) => count + step
 
-const FavoriteAnimal = ({ animal, onAnimalChange }) => {
-  // const [animal, setAnimal] = useState('')
-  // const onAnimalChange = e => console.log(e.target.value)
-  return (
-    <div>
-      <label htmlFor="animal">Favorite Animal</label>
-      <input
-        id="animal"
-        name="animal"
-        onChange={onAnimalChange}
-        value={animal}
-      />
-    </div>
-  )
-}
+const Counter = ({ step = 1, initinalCount = 0 }) => {
+  const [count, changeCount] = useReducer(countReducer, initinalCount)
 
-const Display = ({ name, animal }) => {
-  return (
-    <h1>
-      Hello {name}, your favorite animal is : {animal}
-    </h1>
-  )
+  const increment = () => {
+    changeCount(step)
+  }
+
+  return <button onClick={increment}>{count}</button>
 }
 
 const App = () => {
-  const [name, setName] = useState('')
-  const [animal, setAnimal] = useState('')
-  return (
-    <form>
-      <Name name={name} onNameChange={event => setName(event.target.value)} />
-      <FavoriteAnimal
-        animal={animal}
-        onAnimalChange={event => setAnimal(event.target.value)}
-      />
-      <Display name={name} animal={animal} />
-    </form>
-  )
+  return <Counter />
 }
 
 export default App
